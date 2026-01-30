@@ -69,11 +69,11 @@ class ArticlesScraping:
             )
         }
 
-    def _save_json(self, result: list[dict]) -> None:
+    def save_json(self, result: list[dict], path: str = 'articles.json') -> None:
         """
         Сохраняет найденные статьи в JSON
         """
-        with open('articles.json', 'w', encoding='utf-8') as file:
+        with open(path, 'w', encoding='utf-8') as file:
             json.dump(result, file,ensure_ascii=False, indent=2)
 
     def collect_articles(self, count: int) -> list[dict]:
@@ -105,5 +105,4 @@ class ArticlesScraping:
                     if len(result) == count:
                         break
             page += 1
-        self._save_json(result)
         return result
