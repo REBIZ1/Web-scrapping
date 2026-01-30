@@ -81,6 +81,8 @@ class ArticlesScraping:
         Объединяет текст превью и статьи, ищет нужные статьи и возвращает их.
         count - кол-во необходимых статей.
         """
+        if not count or not self.automation:
+            return f'Введите хотя бы одно слово и кол-во'
         result = []
         page = 1
         while len(result) < count:
